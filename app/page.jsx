@@ -7,13 +7,13 @@ const SUPABASE_URL = "https://ccornucfqjfxhjurpbcu.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNjb3JudWNmcWpmeGhqdXJwYmN1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMTgwODQsImV4cCI6MjA5Mjg5NDA4NH0.EuVR4lUVniFAomiv2o9cAysMqmiCmQrMrWmxyaG96PA";
 const TEAM = "randalog";
 const STORAGE_KEY = "randalog_game_reviews";
-const COACH_PIN = "5487";
+const COACH_PIN = "1234";
 
-const DESTROYERS = ["Mistakes","Going behind on the scoreboard","Sledging from opposition","Injury break / long stoppage","Stress from off the pitch","Too outcome focused","Unhelpful thoughts","The crowd","My coaches on the sideline","My teammates"];
+const DESTROYERS = ["Mistakes","Going behind on the scoreboard","Sledging from opposition","Injury break / long stoppage","Personal issues","Too outcome focused","Unhelpful thoughts","The crowd","Distractions on the sideline","A teammate"];
 const INTENSITY_LEVELS = [
   { id: "zone", label: "In the Zone", color: "#2ECC71", emoji: "⚡", desc: "Physically active, mentally sharp — I was up for it" },
   { id: "inconsistent", label: "Inconsistent", color: "#F4C542", emoji: "〰", desc: "Had moments but dipped in and out" },
-  { id: "flat", label: "Flat", color: "#E74C3C", emoji: "▽", desc: "Heavy legs, going through the motions" },
+  { id: "flat", label: "Flat", color: "#E74C3C", emoji: "🔻", desc: "Heavy legs, going through the motions" },
 ];
 const MINDSET_LEVELS = [
   { id: "challenge", label: "Challenge Mindset", color: "#2ECC71", emoji: "🔥", desc: "Excited, taking risks, playing freely — What do I stand to gain?" },
@@ -21,7 +21,7 @@ const MINDSET_LEVELS = [
   { id: "threat", label: "Threat Mindset", color: "#E74C3C", emoji: "🔒", desc: "Anxious, hiding, tense — What do I stand to lose?" },
 ];
 const CHALLENGE_FACTORS = ["Excited","Taking Appropriate Risks","Focused","Clear Decisions","Hurling & Moving Freely","Seeing the Game as a Challenge","Focusing on My Strengths","Good Preparation","Positive Body Language","Positive Self-Talk"];
-const THREAT_FACTORS = ["Anxious","Playing Safe / Hiding","Distracted","Confused Decisions","Body Overly Tensed","Fear of Making Mistakes","Disjointed Preparation","Negative Self-Talk"];
+const THREAT_FACTORS = ["Anxious","Playing Safe / Hiding","Distracted","Confused Decisions","Body Overly Tensed","Fear of Making Mistakes","Disjointed Preparation","Negative Self-Talk", "Poor Body Language"];
 const ZONE_FACTORS = ["Pre-match routine","Good warm-up","Cue phrases / self-talk","Stayed focused after mistakes","Positive body language","Support from teammates","Slept well / good preparation","High energy from throw-in"];
 const RATINGS = [
   { key: "Preparation", desc: "Pre-match routine, nutrition, sleep, mental rehearsal" },
@@ -110,7 +110,7 @@ function ChipSelector({ items, selected, onToggle, color }) {
       {items.map(d => {
         const isSelected = selected.includes(d);
         return (
-          <button key={d} onClick={() => onToggle(d)} style={{ padding: "10px 14px", borderRadius: 30, border: `1.5px solid ${isSelected ? color : "#1E2D3D"}`, background: isSelected ? `${color}22` : "#111D2C", color: isSelected ? color : "#7F8C8D", fontFamily: "'Courier New', monospace", fontSize: 12, cursor: "pointer", transition: "all 0.15s ease" }}>{d}</button>
+          <button key={d} onClick={() => onToggle(d)} style={{ padding: "10px 14px", borderRadius: 40, border: `1.5px solid ${isSelected ? color : "#4A6580"}`, background: isSelected ? `${color}22` : "#111D2C", color: isSelected ? color : "#7F8C8D", fontFamily: "'Courier New', monospace", fontSize: 12, cursor: "pointer", transition: "all 0.15s ease" }}>{d}</button>
         );
       })}
     </div>
@@ -238,7 +238,7 @@ function HistoryView({ reviews, onBack, onDelete }) {
   const [expanded, setExpanded] = useState(null);
   if (reviews.length === 0) return (
     <div style={{ textAlign: "center", padding: "60px 20px" }}>
-      <div style={{ fontSize: 36, marginBottom: 12 }}>📋</div>
+      <div style={{ fontSize: 36, marginBottom: 12 }}>🔒</div>
       <div style={{ color: "#7F8C8D", fontFamily: "Georgia, serif", fontSize: 15 }}>No reviews yet.</div>
       <button onClick={onBack} style={{ marginTop: 28, padding: "12px 24px", background: "#2ECC71", border: "none", borderRadius: 10, color: "#0D1B2A", fontFamily: "'Courier New', monospace", fontWeight: "bold", fontSize: 12, cursor: "pointer", letterSpacing: 1 }}>← BACK</button>
     </div>
@@ -423,12 +423,12 @@ export default function App() {
                 <div key={f.key} style={{ marginBottom:20 }}>
                   <div style={{ color:"#7F8C8D", fontSize:12, fontFamily:"'Courier New', monospace", letterSpacing:2, marginBottom:8 }}>{f.label}</div>
                   <input value={info[f.key]} onChange={e=>setInfo(p=>({...p,[f.key]:e.target.value}))} placeholder={f.placeholder}
-                    style={{ width:"100%", background:"#1A2535", border:"1.5px solid #2C3E50", borderRadius:10, color:"#ECF0F1", padding:"14px 16px", fontSize:16, fontFamily:"Georgia, serif", outline:"none" }}
+                    style={{ width:"100%", background:"#1E2D3D", border:"1.5px solid #2C3E50", borderRadius:10, color:"#ECF0F1", padding:"14px 16px", fontSize:16, fontFamily:"Georgia, serif", outline:"none" }}
                     onFocus={e=>e.target.style.borderColor="#2ECC71"} onBlur={e=>e.target.style.borderColor="#1E2D3D"} />
                 </div>
               ))}
               <div style={{ background:"#0D1B2A", borderRadius:10, padding:"10px 14px", border:"1px solid #1E2D3D" }}>
-                <div style={{ color:"#3D5166", fontSize:13, fontFamily:"Georgia, serif", lineHeight:1.5 }}>📋 Your name and completion date are logged so squad engagement can be observed. Your answers stay confidential and only you can view them.</div>
+                <div style={{ color:"#3D5166", fontSize:13, fontFamily:"Georgia, serif", lineHeight:1.5 }}>🔒 Your answers stay private. Coaches can only see which players are engaging with their post game review.</div>
               </div>
             </div>
           )}
@@ -545,15 +545,10 @@ export default function App() {
             <div>
               <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:10 }}><span style={{fontSize:20,color:"#E74C3C"}}>▶</span><span style={{color:"#E74C3C",fontFamily:"'Courier New', monospace",fontWeight:"bold",fontSize:11,letterSpacing:2}}>ACTION PLAN</span></div>
               <div style={{ color:"#ECF0F1", fontSize:22, fontFamily:"Georgia, serif", fontWeight:"bold", marginBottom:6 }}>What will you do about it?</div>
-              <div style={{ color:"#7F8C8D", fontSize:13, fontFamily:"Georgia, serif", marginBottom:24 }}>You're far more likely to follow through when you write it down.</div>
               <div style={{ background:"#111D2C", borderRadius:12, padding:"16px", marginBottom:16, border:"1px solid #1E2D3D" }}>
-                <ActionField label="✓ KEEP DOING" sublabel="What must you maintain to keep improving?" value={action.keep_doing} onChange={v=>setAction(p=>({...p,keep_doing:v}))} placeholder="e.g. Pre-match routine, mental rehearsal the night before..." />
-                <ActionField label="→ WILL CHANGE" sublabel="What area will you work on this week?" value={action.will_change} onChange={v=>setAction(p=>({...p,will_change:v}))} placeholder="e.g. Fitness work, staying composed after mistakes..." />
-              </div>
-              <div style={{ background:"#111D2C", borderRadius:12, padding:"16px", border:"1px solid #E74C3C33" }}>
-                <div style={{ color:"#E74C3C", fontFamily:"'Courier New', monospace", fontSize:10, letterSpacing:2, marginBottom:14 }}>◆ MY #1 FOCUS THIS WEEK <span style={{ color:"#3D5166", fontSize:9 }}>(optional)</span></div>
-                <ActionField label="WHAT" sublabel="Your single most important focus" value={action.focus_what} onChange={v=>setAction(p=>({...p,focus_what:v}))} placeholder="e.g. Improving my first touch under pressure" rows={2} />
-                <ActionField label="HOW" sublabel="Exactly how will you work on it?" value={action.focus_how} onChange={v=>setAction(p=>({...p,focus_how:v}))} placeholder="e.g. 15 mins extra practice after Tuesday training" rows={2} />
+                <ActionField label="✓ KEEP DOING" sublabel="What must you maintain to keep improving?" value={action.keep_doing} onChange={v=>setAction(p=>({...p,keep_doing:v}))} placeholder="e.g. Pre-match routine, good warm-up, positive self-talk..." />
+                <ActionField label="→ WILL CHANGE" sublabel="What area will you work on this week?" value={action.will_change} onChange={v=>setAction(p=>({...p,will_change:v}))} placeholder="e.g. Work rate, communication, staying composed after a setback..." />
+                <ActionField label="◆ HOW & WHEN" sublabel="How and when will you work on it?" value={action.focus_how} onChange={v=>setAction(p=>({...p,focus_how:v}))} placeholder="e.g. 15 mins extra shooting practice after Tuesday training" rows={2} />
               </div>
             </div>
           )}
