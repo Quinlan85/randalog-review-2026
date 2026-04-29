@@ -428,7 +428,7 @@ export default function App() {
                 </div>
               ))}
               <div style={{ background:"#0D1B2A", borderRadius:10, padding:"10px 14px", border:"1px solid #1E2D3D" }}>
-                <div style={{ color:"#3D5166", fontSize:13, fontFamily:"Georgia, serif", lineHeight:1.5 }}>🔒 Your answers stay private. Coaches can only see which players are engaging with their post-game review.</div>
+                <div style={{ color:"#3D5166", fontSize:13, fontFamily:"Georgia, serif", lineHeight:1.5 }}>🔒 Answers stay private. Coaches can only see which players are engaging with their post game review.</div>
               </div>
             </div>
           )}
