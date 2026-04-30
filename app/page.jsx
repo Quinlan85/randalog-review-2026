@@ -7,7 +7,7 @@ const SUPABASE_URL = "https://ccornucfqjfxhjurpbcu.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNjb3JudWNmcWpmeGhqdXJwYmN1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMTgwODQsImV4cCI6MjA5Mjg5NDA4NH0.EuVR4lUVniFAomiv2o9cAysMqmiCmQrMrWmxyaG96PA";
 const TEAM = "randalog";
 const STORAGE_KEY = "randalog_game_reviews";
-const COACH_PIN = "1234";
+const COACH_PIN = "5487";
 
 const DESTROYERS = ["Mistakes","Going behind on the scoreboard","Sledging from opposition","Injury break / long stoppage","Personal issues","Too outcome focused","Unhelpful thoughts","The crowd","Distractions on the sideline","A teammate"];
 const INTENSITY_LEVELS = [
